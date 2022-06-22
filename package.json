@@ -1,0 +1,27 @@
+{
+  "name": "projeto-1---mod-3",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index",
+    "dev": "nodemon index"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/MathMascarenhas/Projeto-1---Mod-3.git"
+  },
+  "author": "Matheus Mascarenhas",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/MathMascarenhas/Projeto-1---Mod-3/issues"
+  },
+  "homepage": "https://github.com/MathMascarenhas/Projeto-1---Mod-3#readme",
+  "dependencies": {
+    "cors": "^2.8.5",
+    "express": "^4.18.1"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.16"
+  }
+}
