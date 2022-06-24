@@ -1,14 +1,14 @@
-const express = require('express');
-const cors = require('cors');
-const route = require('./src/routes/tasks.route');
+import express from 'express';
+import cors from 'cors';
+import router from './src/routes/tasks.route.js';
 
 const port = 3000;
 const app = express();
 
 app.use(cors());
 app.use(express.json());
-app.use('/to-do-list', route);
+app.use('/to-do-list', router);
 
 app.listen(port, () => {
-  console.log(`Server running in http://localhost:${port}`);
+  console.log(`Server running on http://localhost:${port}`);
 });

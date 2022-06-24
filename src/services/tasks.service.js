@@ -25,38 +25,30 @@ const tasks = [
   },
 ];
 
-const findTasksService = () => {
-  return tasks;
+export const findAllTasksService = () => tasks;
+
+export const findTaskByIdService = (id) => {
+  const TaskById = tasks.find((task) => task.id == id);
+  return TaskById;
 };
 
-const findTaskByIdService = (id) => {
-  return tasks.find((task) => task.id == id);
-};
-
-const createTaskService = (newTask) => {
-  const newId = tasks.length + 1;
+export const createTaskService = (newTask) => {
+  const lastObject = tasks[tasks.length - 1];
+  const newId = lastObject.id + 1;
   newTask.id = newId;
   newTask.done = false;
   tasks.push(newTask);
   return newTask;
 };
 
-const updateTaskService = (id, taskEdited) => {
+export const updateTaskService = (id, taskEdited) => {
   taskEdited['id'] = id;
-  const taskIndex = tasks.findIndex((task) => task.id == id);
+  const taskIndex = tasks.findIndex((task) => task.id === id);
   tasks[taskIndex] = taskEdited;
   return taskEdited;
 };
 
-const deleteTaskService = (id) => {
-  const taskIndex = tasks.findIndex((task) => task.id == id);
+export const deleteTaskService = (id) => {
+  const taskIndex = tasks.findIndex((task) => task.id === id);
   return tasks.splice(taskIndex, 1);
-};
-
-module.exports = {
-  findTasksService,
-  findTaskByIdService,
-  createTaskService,
-  updateTaskService,
-  deleteTaskService,
 };

@@ -1,39 +1,41 @@
-const tasksService = require('../services/tasks.service');
+import {
+  findAllTasksService,
+  findTaskByIdService,
+  createTaskService,
+  updateTaskService,
+  deleteTaskService,
+} from '../services/tasks.service.js';
 
-const findTasksController = (req, res) => {
-  const allTasks = tasksService.findTasksService();
+export const findTasksController = (req, res) => {
+  const allTasks = findAllTasksService();
   res.send(allTasks);
 };
 
-const findTaskByIdController = (req, res) => {
-  const idParam = req.params.id;
-  const chosenTask = tasksService.findTaskByIdService(idParam);
-  res.send(chosenTask);
+export const findTaskByIdController = (req, res) => {
+  const idParam = +req.params.id;
+  const chosenTask = findTaskByIdService(idParam);
+  if (chosenTask === undefined) {
+    res.status(204).send({ message: 'Tarefa não foi encontrada' });
+  } else {
+    res.send(chosenTask);
+  }
 };
 
-const createTaskController = (req, res) => {
+export const createTaskController = (req, res) => {
   const task = req.body;
-  const newTask = tasksService.createTaskService(task);
+  const newTask = createTaskService(task);
   res.send(newTask);
 };
 
-const updateTaskController = (req, res) => {
-  const idParam = req.params.id;
+export const updateTaskController = (req, res) => {
+  const idParam = +req.params.id;
   const taskEdit = req.body;
-  const updatedTask = tasksService.updateTaskService(idParam, taskEdit);
+  const updatedTask = updateTaskService(idParam, taskEdit);
   res.send(updatedTask);
 };
 
-const deleteTaskController = (req, res) => {
-  const idParam = req.params.id;
-  tasksService.deleteTaskService(idParam);
+export const deleteTaskController = (req, res) => {
+  const idParam = +req.params.id;
+  deleteTaskService(idParam);
   res.send({ message: 'Tarefa deletada com sucesso!' });
-};
-
-module.exports = {
-  findTasksController,
-  findTaskByIdController,
-  createTaskController,
-  updateTaskController,
-  deleteTaskController,
 };
