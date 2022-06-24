@@ -28,7 +28,7 @@ const tasks = [
 export const findAllTasksService = () => tasks;
 
 export const findTaskByIdService = (id) => {
-  const TaskById = tasks.find((task) => task.id == id);
+  const TaskById = tasks.find((task) => task.id === id);
   return TaskById;
 };
 
