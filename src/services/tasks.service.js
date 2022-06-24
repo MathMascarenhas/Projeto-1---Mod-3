@@ -50,5 +50,9 @@ export const updateTaskService = (id, taskEdited) => {
 
 export const deleteTaskService = (id) => {
   const taskIndex = tasks.findIndex((task) => task.id === id);
-  return tasks.splice(taskIndex, 1);
+  if (taskIndex === -1) {
+    return false
+  } else {
+   return tasks.splice(taskIndex, 1);
+  }
 };

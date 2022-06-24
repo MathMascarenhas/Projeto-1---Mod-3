@@ -36,6 +36,9 @@ export const updateTaskController = (req, res) => {
 
 export const deleteTaskController = (req, res) => {
   const idParam = +req.params.id;
-  deleteTaskService(idParam);
-  res.send({ message: 'Tarefa deletada com sucesso!' });
+  if (deleteTaskService(idParam)) {
+    res.send({ message: 'Tarefa deletada com sucesso!' });
+  } else {
+    res.status(204).send({ message: 'Tarefa não foi encontrada' });
+  }
 };
