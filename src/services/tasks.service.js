@@ -42,7 +42,7 @@ export const createTaskService = (newTask) => {
 };
 
 export const updateTaskService = (id, taskEdited) => {
-  taskEdited['id'] = id;
+  taskEdited.id = id;
   const taskIndex = tasks.findIndex((task) => task.id === id);
   tasks[taskIndex] = taskEdited;
   return taskEdited;
@@ -51,8 +51,8 @@ export const updateTaskService = (id, taskEdited) => {
 export const deleteTaskService = (id) => {
   const taskIndex = tasks.findIndex((task) => task.id === id);
   if (taskIndex === -1) {
-    return false
+    return false;
   } else {
-   return tasks.splice(taskIndex, 1);
+    return tasks.splice(taskIndex, 1);
   }
 };
