@@ -31,7 +31,11 @@ export const updateTaskController = (req, res) => {
   const idParam = +req.params.id;
   const taskEdit = req.body;
   const updatedTask = updateTaskService(idParam, taskEdit);
-  res.send(updatedTask);
+  if (updatedTask === false) {
+    res.status(204).send({ message: 'Tarefa não foi encontrada' });
+  } else {
+    res.send(updatedTask);
+  }
 };
 
 export const deleteTaskController = (req, res) => {
